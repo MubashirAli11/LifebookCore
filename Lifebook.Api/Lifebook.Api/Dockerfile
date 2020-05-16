@@ -7,10 +7,10 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
-COPY ["Lifebook.Api/Lifebook.Api.csproj", "Lifebook.Api/"]
-RUN dotnet restore "Lifebook.Api/Lifebook.Api.csproj"
+COPY ["Lifebook.Api/Lifebook.Api/Lifebook.Api.csproj", "Lifebook.Api/"]
+RUN dotnet restore "Lifebook.Api/Lifebook.Api/Lifebook.Api.csproj"
 COPY . .
-WORKDIR "/src/Lifebook.Api"
+WORKDIR "/src/Lifebook.Api/Lifebook.Api"
 RUN dotnet build "Lifebook.Api.csproj" -c Release -o /app/build
 
 FROM build AS publish
