@@ -11,12 +11,12 @@ COPY ["Lifebook.Api.csproj", "Lifebook.Api/"]
 RUN dotnet restore "Lifebook.Api/Lifebook.Api.csproj"
 COPY . .
 WORKDIR "/src/Lifebook.Api"
-RUN dotnet build "Lifebook.Api.csproj" -c Release -o /app/build
+RUN dotnet build "Lifebook.Api.csproj" -c Release -o /app
 
 FROM build AS publish
-RUN dotnet publish "Lifebook.Api.csproj" -c Release -o /app/publish
+RUN dotnet publish "Lifebook.Api.csproj" -c Release -o /app
 
 FROM base AS final
 WORKDIR /app
-COPY --from=publish /app/publish .
+COPY --from=publish /app .
 ENTRYPOINT ["dotnet", "Lifebook.Api.dll"]
