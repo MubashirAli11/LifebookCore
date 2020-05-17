@@ -10,7 +10,7 @@ WORKDIR /src
 COPY ["Lifebook.Api.csproj", "Lifebook.Api/"]
 RUN dotnet restore "Lifebook.Api/Lifebook.Api.csproj"
 COPY . .
-COPY Lifebook.Api.sln ./
+COPY ./Lifebook.Api.sln ./
 WORKDIR "/src/Lifebook.Api"
 RUN dotnet build "Lifebook.Api.csproj" -c Release -o /app/build
 
