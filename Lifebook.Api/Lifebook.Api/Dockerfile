@@ -13,7 +13,7 @@ COPY . .
 WORKDIR "/src/Lifebook.Api"
 RUN dotnet build "Lifebook.Api.csproj" -c Release -o /app
 
-FROM build AS publish
+FROM app AS publish
 RUN dotnet publish "Lifebook.Api.csproj" -c Release -o /app
 
 FROM base AS final
